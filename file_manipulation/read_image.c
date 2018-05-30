@@ -4,17 +4,17 @@
 int main()
 {
 	char *buffer;
-	FILE *image = fopen("sushi.jpg", "rb");
-	FILE *out = fopen("result.jpg", "wb");
+	FILE *image = fopen("image.jpeg", "rb");
+	FILE *out = fopen("result.jpeg", "wb");
 
 	fseek(image, 0, SEEK_END);
 	int lenght = ftell(image);
+	fseek(image, 0, SEEK_SET);
 	buffer = (char*)malloc(lenght + 1);
 	fread(buffer, lenght, 1, image);
 	fwrite(buffer, lenght, 1, out);
 	fclose(image);
 	fclose(out);
 
-	//printf("content: %s\n", string);
 	return 0;
 }
